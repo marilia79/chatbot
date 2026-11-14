@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Login - Painel Secretaria Acadêmica</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f2f2f2; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+  .login-box { background: #fff; padding: 32px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); width: 320px; }
+  .login-box h1 { font-size: 18px; color: #0b5d3b; margin-bottom: 20px; text-align: center; }
+  .login-box label { display: block; margin-bottom: 6px; font-size: 13px; color: #333; }
+  .login-box input { width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+  .login-box button { width: 100%; padding: 10px; background: #0b5d3b; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+  .erro { background: #f8cecc; color: #b85450; padding: 8px 12px; border-radius: 6px; margin-bottom: 16px; font-size: 13px; }
+  .aviso { font-size: 11px; color: #888; text-align: center; margin-top: 14px; }
+</style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>Painel Secretaria Acadêmica<br>IFSC Garopaba</h1>
+    {% if erro %}<div class="erro">{{ erro }}</div>{% endif %}
+    <form method="POST">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" required autofocus>
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <div class="aviso">Usuário padrão: admin / senha: admin123<br>(troque antes de ir para produção)</div>
+  </div>
+</body>
+</html>
